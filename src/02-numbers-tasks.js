@@ -158,8 +158,8 @@ function parseNumberFromString(value) {
  *   3,3,3   => 5.196152422706632
  *   1,2,3   => 3.741657386773941
  */
-function getParallelepipedDiagonal(/* a, b, c */) {
-  throw new Error('Not implemented');
+function getParallelepipedDiagonal(a, b, c) {
+  return Math.sqrt(a ** 2 + b ** 2 + c ** 2);
 }
 
 
@@ -226,7 +226,7 @@ function isPrime(n) {
  *   toNumber(new Number(42), 0) => 42
  */
 function toNumber(value, def) {
-  return (!Number.isNaN(parseFloat(value)) && Number.isFinite(value)) ? +value : def;
+  return (!Number.isNaN(Number(value)) && Number.isFinite(Number(value))) ? +value : def;
 }
 
 module.exports = {
