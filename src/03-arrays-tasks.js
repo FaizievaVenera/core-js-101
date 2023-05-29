@@ -270,8 +270,11 @@ function getSecondItems(arr) {
  *  [ 'a', 'b', 'c', null ] => [ 'a', 'b','b', 'c','c','c',  null,null,null,null ]
  *  [ 1,2,3,4,5 ] => [ 1, 2,2, 3,3,3, 4,4,4,4, 5,5,5,5,5 ]
  */
-function propagateItemsByPositionIndex(/* arr */) {
-  throw new Error('Not implemented');
+function propagateItemsByPositionIndex(arr) {
+  let massive = [];
+  arr.every((item, index) => massive.push(Array.from({ length: index + 1 }).fill(item)));
+  massive = massive.flat();
+  return massive;
 }
 
 
@@ -566,8 +569,17 @@ function getElementByIndexes(/* arr, indexes */) {
  *   [ 1, 2, 3, 4, 5, 6, 7, 8 ]   =>  [ 5, 6, 7, 8, 1, 2, 3, 4 ]
  *
  */
-function swapHeadAndTail(/* arr */) {
-  throw new Error('Not implemented');
+function swapHeadAndTail(arr) {
+  const massive = [];
+  if (arr.length % 2 !== 0) {
+    massive.push(arr.slice(Math.ceil(arr.length / 2)));
+    massive.push(Math.ceil(arr.length / 2));
+    massive.push(arr.slice(0, Math.ceil(arr.length / 2) - 1));
+  } else {
+    massive.push(arr.slice(Math.ceil(arr.length / 2)));
+    massive.push(arr.slice(0, Math.ceil(arr.length / 2)));
+  }
+  return massive.flat();
 }
 
 
